@@ -82,7 +82,7 @@ if (document.getElementById('title-section')) {
   let titleSlug = null;
 
   const pathParts = window.location.pathname.split('/');
-  const slugPart = pathParts.includes('pdf.html') ? pathParts.pop() : null;
+  const slugPart = pathParts[pathParts.length - 1];
 
   if (slugPart) {
     const match = slugPart.match(/^([0-9]+)-(.+)$/);
@@ -164,7 +164,7 @@ if (document.getElementById('title-section')) {
             const suggestions = shuffled.map(d => {
               const slug = slugify(d.Title);
               const randomDomain = domains[Math.floor(Math.random() * domains.length)];
-              const url = `${randomDomain}/pdf.html/${d.ID}-${slug}`;
+              const url = `${randomDomain}/pdf/${d.ID}-${slug}`;
               return `
                 <div class="related-post">
                   <div class="related-post-title">
@@ -205,7 +205,7 @@ if (document.getElementById('results') && !document.getElementById('header')) {
       const suggestions = shuffled.map(d => {
         const slug = slugify(d.Title);
         const baseUrl = window.location.origin;
-        const url = `${baseUrl}/pdf.html/${d.ID}-${slug}`;
+        const url = `${baseUrl}/pdf/${d.ID}-${slug}`;
         return `
           <div class="related-post">
             <div class="related-post-title">
@@ -273,7 +273,7 @@ if (document.getElementById('header') && document.getElementById('results')) {
           headerEl.textContent = `${matches.length} document${matches.length !== 1 ? 's' : ''} found for '${queryParam.replace(/-/g, ' ')}'.`;
           const output = pageResults.map(d => {
             const slug = slugify(d.Title);
-            const url = `${baseUrl}/pdf.html/${d.ID}-${slug}`;
+            const url = `${baseUrl}/pdf/${d.ID}-${slug}`;
             const highlightedTitle = highlight(d.Title, queryWords);
             const highlightedSummary = highlight(d.Summary, queryWords);
             return `
@@ -347,7 +347,7 @@ if (document.getElementById('header') && document.getElementById('results')) {
           headerEl.textContent = `No documents found for '${queryParam.replace(/-/g, ' ')}'. But, these documents might be interesting for you.`;
           const suggestions = data.sort(() => 0.5 - Math.random()).slice(0, 10).map(d => {
             const slug = slugify(d.Title);
-            const url = `${baseUrl}/pdf.html/${d.ID}-${slug}`;
+            const url = `${baseUrl}/pdf/${d.ID}-${slug}`;
             return `
               <hr class="post-divider">
               <div class="related-post">
