@@ -82,7 +82,7 @@ if (document.getElementById('title-section')) {
   let titleSlug = null;
 
   const pathParts = window.location.pathname.split('/');
-  const slugPart = pathParts.includes('pdf') ? pathParts.pop() : null;
+  const slugPart = pathParts.includes('pdf.html') ? pathParts.pop() : null;
 
   if (slugPart) {
     const match = slugPart.match(/^([0-9]+)-(.+)$/);
@@ -153,7 +153,7 @@ if (document.getElementById('title-section')) {
         `;
 
         // 🔄 UPDATED: Suggestion with random domain from URLs.txt
-        fetch('https://raw.githubusercontent.com/kuenastar115/scbd/main/src/urls.txt')
+        fetch('https://raw.githubusercontent.com/zie2store/firbat/main/src/urls.txt')
           .then(res => res.text())
           .then(text => {
             const domains = text.split('\n').map(line => line.trim()).filter(Boolean);
