@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (input) {
           const query = input.toLowerCase().replace(/\s+/g, '-');
           const baseUrl = window.location.origin;
-          window.location.href = `${baseUrl}/search?query=${query}`;
+          window.location.href = `${baseUrl}/search.html?query=${query}`;
         }
       });
     }
